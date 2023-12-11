@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag e Drop</title>
+    <style>
+#estrutu {
+    display: flex;
+}
+#div {
+    width: 185px;
+    height: 305px;
+    padding: 10px;
+    border: 1px solid #000000;
+    display: flex;
+}
+#mov1 {
+    display: none;
+     
+}
+#mov2 {
+    display: none;
+     
+}
+#mov3 {
+    display: none;
+}
+#d1, #d2 {
+    float: left;
+    width: 200px;
+    height: 70px;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid black;
+}
+#image{
+    height: 70px;
+    width: 100px;
+}
+</style>
+</head>
+<html>
+    <body>
+        <h1>Drag e Drop - Exemplo2</h1>
+       
+        <div id="d1" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <img src="/Aulas_Js/img/1.png" draggable="true" ondragstart="drag(event)" id="image" width="88" height="31">
+        </div>
+       
+        <div id="d2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+   
+    
+    <script>
+        function allowDrop(rr) {
+        rr.preventDefault();
+    }
+        function drag(rr, esc, esc2, esc3) {
+        rr.dataTransfer.setData("text", rr.target.id);
+        esc.style.display = 'block';
+        esc2.style.display = 'block';
+        esc3.style.display = 'block';
+    }
+        function drop(rr) {
+        rr.preventDefault();
+        var data = rr.dataTransfer.getData("text");
+        rr.target.appendChild(document.getElementById(data));
+    }
+    function allowDrop(dd) {
+          dd.preventDefault();
+        }
+        function drag(dd) {
+          dd.dataTransfer.setData("text", dd.target.id);
+        }
+        function drop(dd) {
+          dd.preventDefault();
+          var data = dd.dataTransfer.getData("text");
+          dd.target.appendChild(document.getElementById(data));
+        }
+    </script>
+    </body>
+</html>
